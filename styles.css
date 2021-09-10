@@ -58,6 +58,7 @@ a{
 	border-top: 2px solid #000;
 }
 .searchbar span{
+	opacity: 0;
 	--scrollAmount: 0%;
 	opacity: var(--scrollAmount);
 	height: 36px;

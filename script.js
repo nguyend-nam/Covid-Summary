@@ -68,7 +68,7 @@ function getData(d, ctrn){
 		// 	content += '<div class="category iso flex-col"><span>ISO</span><span>'+d[key[i]].All.iso+'</span></div>';
 		// 	content += '</div></div>';
 		// }
-		content += '<div class="card"><div class="info">No country found. Please type appropriate country name</div></div>';
+		content += '<div class="card"><div class="info">No country name found or not the same as given in the API. Please try again or take a few minutes to glance over the API docs below.</div></div>';
 	}
 	document.getElementById('content').innerHTML = content;
 }
