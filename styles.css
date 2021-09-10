@@ -113,7 +113,7 @@ a{
 }
 .stats{
 	padding: 10px;
-	background: #fcfcfc;
+	background: #fbfbfb;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
@@ -138,7 +138,7 @@ a{
 	height: 160px;
 	width: 160px;
 	align-items: center;
-	background: #fff;
+	background-color: #ffffff;
 	margin: 10px;
 	border-radius: 50%;
 	box-sizing: border-box;
