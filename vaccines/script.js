@@ -1,0 +1,95 @@
+window.onload = function() {
+	getCountry('Vietnam');
+}
+document.getElementById('input').addEventListener("keypress", function(event){
+	if(event.key === 'Enter'){
+		getCountry(document.getElementById('input').value);
+	}
+});
+
+function search(){
+	getCountry(document.getElementById('input').value);
+}
+
+function getCountry(name){
+	// Formatting country name
+	name.toLowerCase();
+	var n = name[0]; n = n.toUpperCase();
+	var countryName = n + name.substring(1, name.length);
+	for(let j=0; j<countryName.length-1; j++){
+		if(countryName[j] == ' ') {
+			p = countryName.substring(0, j+1);
+			r = countryName.substring(j+2, countryName.length);
+			q = countryName[j+1]; q = q.toUpperCase();
+			countryName = p + q + r;
+		}
+	}
+	countryName.replace(" ", "%20");
+	var tmp = countryName; tmp = tmp.toLowerCase();
+	if(tmp == 'us') countryName = 'US';
+	// End formatting
+	fetch('https://covid-api.mmediagroup.fr/v1/vaccines?country=' + countryName)
+	.then(function(resp) { return resp.json() }) // Convert data to json
+	.then(function(data) {
+		getData(data, countryName);
+	});
+}
+
+function getData(d, ctrn){
+	var key = Object.keys(d);
+	var content = '';
+	if(ctrn == 'Global'){
+		content += '<div class="card"><div class="info">'+ctrn.toUpperCase()+'</div>';
+		content += '<div class="stats" id="stats"><div class="category blue flex-col"><span>Population</span><span>'+d.All.population+'</span></div>';
+		content += '<div class="category green flex-col"><span>Administered</span><span>'+d.All.administered+'</span></div>';
+		content += '<div class="category green flex-col"><span>People vaccinated</span><span>'+d.All.people_vaccinated+'</span></div>';
+		content += '<div class="category green flex-col"><span>Partially vaccinated</span><span>'+d.All.people_partially_vaccinated+'</span></div>';
+		content += '</div></div>';
+	}
+	else if(key[0] == 'All') {
+		content += '<div class="card"><img src="https://www.worldatlas.com/r/w425/img/flag/' + d.All.abbreviation.toLowerCase() + '-flag.jpg" height=139px>';
+		content += '<div class="info">'+d.All.country.toUpperCase()+' - '+d.All.location+'</div>';
+		content += '<div class="stats" id="stats"><div class="category blue flex-col"><span>Population</span><span>'+d.All.population+'</span></div>';
+		content += '<div class="category green flex-col"><span>Administered</span><span>'+d.All.administered+'</span></div>';
+		content += '<div class="category green flex-col"><span>People vaccinated</span><span>'+d.All.people_vaccinated+'</span></div>';
+		content += '<div class="category green flex-col"><span>Partially vaccinated</span><span>'+d.All.people_partially_vaccinated+'</span></div>';
+		content += '<div class="category green flex-col"><span>Life expectancy</span><span>'+d.All.life_expectancy+'</span></div>';
+		content += '<div class="category blue flex-col"><span>ISO</span><span>'+d.All.iso+'</span></div>';
+		content += '</div></div>';
+	}
+	else {
+		content += '<div class="card"><div class="info">No country found. Please type appropriate country name</div></div>';
+	}
+	document.getElementById('content').innerHTML = content;
+}
+
+
+
+
+
+// UI-UX functions
+let processScroll = () => {
+	let docElem = document.documentElement, 
+		docBody = document.body,
+		scrollTop = docElem['scrollTop'] || docBody['scrollTop'],
+		scrollPercent = scrollTop / 62 * 100;
+		opacityVal = scrollPercent / 100;
+		if(opacityVal < 1) opacityVal = 0;
+		else if(opacityVal >= 1) opacityVal = 1;
+	
+	document.getElementById('logo').style.setProperty("--scrollAmount", opacityVal);	
+}
+
+document.addEventListener('scroll', processScroll);
+
+var mn = 0;
+function showMenu(){
+	if(mn == 0){
+		document.getElementById('menu').style.display = 'block';
+		mn = 1;
+	}
+	else if(mn == 1){
+		document.getElementById('menu').style.display = 'none';
+		mn = 0;
+	}
+}

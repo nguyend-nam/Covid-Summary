@@ -1,0 +1,16 @@
+{
+  "name": "covid-summary",
+  "version": "1.0.0",
+  "description": "Summary of Covid-19 stats in countries",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "lite": "lite-server"
+  },
+  "author": "Dinh Nam Nguyen",
+  "license": "MIT",
+  "dependencies": {
+    "lite-server": "^2.6.1",
+    "save-dev": "0.0.1-security"
+  }
+}

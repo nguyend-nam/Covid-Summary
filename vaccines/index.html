@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vaccines | Covid Summary</title>
+	<meta property="og:image" content="../img/og.jpg"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://nguyend-nam.github.io/Covid-Summary/vaccines"/>
+	<meta property="og:title" content="Vaccines | Covid Summary"/>
+	<meta property="og:description" content="Summary of Covid-19 stats in countries"/>
+	<link rel="icon" type = "image/x-icon" href="../img/logo.png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+	<div class="header">
+		<span class="brand"><a href="https://nguyend-nam.github.io/Covid-Summary/">Covid Summary</a></span>
+
+		<div class="header-button flex-col">
+			<div class="show-md">
+				<a href="https://nguyend-nam.github.io/Covid-Summary/">Summary</a>
+				<a href="#" id="cur">Vaccines</a>
+			</div>
+
+			<div class="show-sm">
+				<a onclick="showMenu()"><i class="fas fa-bars"></i></a>
+				<div class="show-sm menu flex-col" id="menu">
+					<a href="https://nguyend-nam.github.io/Covid-Summary/">Summary</a><br>
+					<a href="#" id="cur">Vaccines</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="searchbar" id="searchbar">
+		<span id="logo" class="flex-col">Covid Summary</span>
+		<input id="input" type="text" autocomplete="off" placeholder="Country name / 'Global'">
+		<button onclick="search()"><i class="fas fa-search"></i></button>
+	</div>
+
+	<div class="content" id="content">
+
+	</div>
+	<div class="ftr">
+		<div class="name flex-col"><a href="#">Covid</a><a href="#"><span>Summary</span></a></div>
+		<div>
+			<div>About this site</div>
+			<div class="links flex-col">
+				<a href="https://github.com/NguyenD-Nam/Covid-Summary" target="_blank">GitHub repo</a>
+			</div>
+			<div>API</div>
+			<div class="links flex-col">
+				<a href="https://github.com/M-Media-Group/Covid-19-API" target="_blank">Api docs</a>
+				<a href="https://github.com/M-Media-Group" target="_blank">M Media group</a>
+			</div>
+			<div>About me</div>
+			<div class="links flex-col">
+				<a href="https://nguyend-nam.github.io/" target="_blank">Personal site</a>
+			</div>
+		</div>
+		<div class="copy">&copy; Dinh Nam Nguyen 2021</div>
+	</div>
+
+
+
+	<script src="script.js" type="text/javascript"></script>
+</body>
+</html>
