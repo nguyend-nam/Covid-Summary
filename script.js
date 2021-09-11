@@ -45,7 +45,7 @@ function getData(d, ctrn){
 		content += '<div class="category black flex-col"><span>Deaths</span><span>'+d.All.deaths+'</span></div>';
 		content += '</div></div>';
 	}
-	else if(key[0] == 'All') {
+	else if(key[0] == 'All'){
 		content += '<div class="card"><img src="https://www.worldatlas.com/r/w425/img/flag/' + d.All.abbreviation.toLowerCase() + '-flag.jpg" height=139px>';
 		content += '<div class="info">'+d.All.country.toUpperCase()+' - '+d.All.location+'</div>';
 		content += '<div class="stats" id="stats"><div class="category blue flex-col"><span>Population</span><span>'+d.All.population+'</span></div>';
@@ -56,19 +56,35 @@ function getData(d, ctrn){
 		content += '<div class="category blue flex-col"><span>ISO</span><span>'+d.All.iso+'</span></div>';
 		content += '</div></div>';
 	}
-	else {
-		// for(let i=0; i<5; i++){
-		// 	content += '<div class="card"><img src="https://www.worldatlas.com/r/w425/img/flag/' + d[key[i]].All.abbreviation.toLowerCase() + '-flag.jpg" height=139px>';
-		// 	content += '<div class="info">'+d[key[i]].All.country.toUpperCase()+' - '+d[key[i]].All.location+'</div>';
-		// 	content += '<div class="stats"><div class="category popu flex-col"><span>Population</span><span>'+d[key[i]].All.population+'</span></div>';
-		// 	content += '<div class="category conf flex-col"><span>Cases</span><span>'+d[key[i]].All.confirmed+'</span></div>';
-		// 	content += '<div class="category dea flex-col"><span>Deaths</span><span>'+d[key[i]].All.deaths+'</span></div>';
-		// 	content += '<div class="category lex flex-col"><span>Life expectancy</span><span>'+d[key[i]].All.life_expectancy+'</span></div>';
-		// 	content += '<div class="category area flex-col"><span>Area (km<sup>2</sup>)</span><span>'+d[key[i]].All.sq_km_area+'</span></div>';
-		// 	content += '<div class="category iso flex-col"><span>ISO</span><span>'+d[key[i]].All.iso+'</span></div>';
-		// 	content += '</div></div>';
-		// }
-		content += '<div class="card"><div class="info">No country name found or not the same as given in the API. Please try again or take a few minutes to glance over the API docs below.</div></div>';
+	else{
+		var count = 0;
+		for(let i=0; i<196; i++){
+			if(
+			'abbreviation' in d[key[i]].All &&
+			'country' in d[key[i]].All &&
+			'location' in d[key[i]].All &&
+			'population' in d[key[i]].All &&
+			'confirmed' in d[key[i]].All &&
+			'deaths' in d[key[i]].All &&
+			'sq_km_area' in d[key[i]].All &&
+			'life_expectancy' in d[key[i]].All &&
+			'iso' in d[key[i]].All &&
+			(d[key[i]].All.country.includes(ctrn) || d[key[i]].All.country.includes(ctrn.toLowerCase()))
+			){
+				content += '<div class="card"><img src="https://www.worldatlas.com/r/w425/img/flag/' + d[key[i]].All.abbreviation.toLowerCase() + '-flag.jpg" height=139px>';
+				content += '<div class="info">'+d[key[i]].All.country.toUpperCase()+' - '+d[key[i]].All.location+'</div>';
+				content += '<div class="stats" id="stats"><div class="category blue flex-col"><span>Population</span><span>'+d[key[i]].All.population+'</span></div>';
+				content += '<div class="category red flex-col"><span>Cases</span><span>'+d[key[i]].All.confirmed+'</span></div>';
+				content += '<div class="category black flex-col"><span>Deaths</span><span>'+d[key[i]].All.deaths+'</span></div>';
+				content += '<div class="category blue flex-col"><span>Area (km<sup>2</sup>)</span><span>'+d[key[i]].All.sq_km_area+'</span></div>';
+				content += '<div class="category green flex-col"><span>Life expectancy</span><span>'+d[key[i]].All.life_expectancy+'</span></div>';
+				content += '<div class="category blue flex-col"><span>ISO</span><span>'+d[key[i]].All.iso+'</span></div>';
+				content += '</div></div>';
+				count++;
+			}
+		}
+		if(count > 10) content = '<div class="card"><div class="info"><strong>Too many</strong> country names match keyword, please give us <strong>more specific</strong> keyword.</div></div>';
+		if(count == 0) content = '<div class="card"><div class="info">No country name found, please give us <strong>more appropriate</strong> name or take a few minutes to glance over the API docs below.</div></div>';
 	}
 	document.getElementById('content').innerHTML = content;
 }
