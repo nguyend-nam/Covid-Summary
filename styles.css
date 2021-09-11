@@ -65,7 +65,7 @@ a{
 	font-size: 25px;
 	position: absolute;
 	left: 50px;
-	transition: 0.3s;
+	transition: 0.2s;
 }
 .searchbar input{
 	font-size: 20px;
@@ -74,7 +74,7 @@ a{
 	border-radius: 30px;
 	width: 350px;
 }
-.searchbar button{
+button{
 	font-size: 20px;
 	border: 1px solid #00000080;
 	color: #00000080;
@@ -113,7 +113,7 @@ a{
 }
 .stats{
 	padding: 10px;
-	background: #fbfbfb;
+	background: #f9f9f9;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
@@ -177,11 +177,16 @@ a{
 	margin: 10px 0 10px 10px;
 }
 .copy{
-	background: #222;
+	background: #444;
 	padding: 10px;
 	margin-top: 25px;
 	width: 100%;
 	text-align: center;
+}
+.theme{
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
 }
 
 @media (max-width: 890px){
@@ -215,7 +220,7 @@ a{
 		width: max-content;
 		text-align: right;
 		padding: 10px;
-		line-height: 30px;
+		line-height: 35px;
 		z-index: 3;
 		display: none;
 	}
