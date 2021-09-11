@@ -58,7 +58,34 @@ function getData(d, ctrn){
 		content += '</div></div>';
 	}
 	else {
-		content += '<div class="card"><div class="info">No country name found or not the same as given in the API. Please try again or take a few minutes to glance over the API docs below.</div></div>';
+		var count = 0;
+		for(let i=0; i<166; i++){
+			if(
+				'abbreviation' in d[key[i]].All &&
+				'country' in d[key[i]].All &&
+				'location' in d[key[i]].All &&
+				'population' in d[key[i]].All &&
+				'administered' in d[key[i]].All &&
+				'people_vaccinated' in d[key[i]].All &&
+				'people_partially_vaccinated' in d[key[i]].All &&
+				'life_expectancy' in d[key[i]].All &&
+				'iso' in d[key[i]].All &&
+				(d[key[i]].All.country.includes(ctrn) || d[key[i]].All.country.includes(ctrn.toLowerCase()))
+				){
+				content += '<div class="card"><img src="https://www.worldatlas.com/r/w425/img/flag/' + d[key[i]].All.abbreviation.toLowerCase() + '-flag.jpg" height=139px>';
+				content += '<div class="info">'+d[key[i]].All.country.toUpperCase()+' - '+d[key[i]].All.location+'</div>';
+				content += '<div class="stats" id="stats"><div class="category blue flex-col"><span>Population</span><span>'+d[key[i]].All.population+'</span></div>';
+				content += '<div class="category green flex-col"><span>Administered</span><span>'+d[key[i]].All.administered+'</span></div>';
+				content += '<div class="category green flex-col"><span>People vaccinated</span><span>'+d[key[i]].All.people_vaccinated+'</span></div>';
+				content += '<div class="category green flex-col"><span>Partially vaccinated</span><span>'+d[key[i]].All.people_partially_vaccinated+'</span></div>';
+				content += '<div class="category green flex-col"><span>Life expectancy</span><span>'+d[key[i]].All.life_expectancy+'</span></div>';
+				content += '<div class="category blue flex-col"><span>ISO</span><span>'+d[key[i]].All.iso+'</span></div>';
+				content += '</div></div>';
+				count++;
+			}
+		}
+		if(count > 10) content = '<div class="card"><div class="info"><strong>Too many</strong> country names match keyword, please give us <strong>more specific</strong> keyword.</div></div>';
+		if(count == 0) content = '<div class="card"><div class="info">No country name found, please give us <strong>more appropriate</strong> name or take a few minutes to glance over the API docs below.</div></div>';
 	}
 	document.getElementById('content').innerHTML = content;
 }
