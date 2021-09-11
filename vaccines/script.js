@@ -93,3 +93,23 @@ function showMenu(){
 		mn = 0;
 	}
 }
+
+var theme = 0;
+function changeTheme(){
+	if(theme == 0){
+		document.getElementById('searchbar').style.background = '#555';
+		document.getElementById('logo').style.color = '#fff';
+		document.getElementById('content').style.background = '#333';
+		document.getElementById('stats').style.background = '#eee';
+		document.getElementById('theme').innerHTML = '<i class="fas fa-sun"></i>';
+		theme = 1;
+	}
+	else if(theme == 1){
+		document.getElementById('searchbar').style.background = '#fff';
+		document.getElementById('logo').style.color = '#000';
+		document.getElementById('content').style.background = '#fdfdfd';
+		document.getElementById('stats').style.background = '#f9f9f9';
+		document.getElementById('theme').innerHTML = '<i class="fas fa-moon"></i>';
+		theme = 0;
+	}
+}
