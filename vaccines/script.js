@@ -97,10 +97,10 @@ function showMenu(){
 var theme = 0;
 function changeTheme(){
 	if(theme == 0){
-		document.getElementById('searchbar').style.background = '#555';
+		document.getElementById('searchbar').style.background = '#383838';
 		document.getElementById('logo').style.color = '#fff';
-		document.getElementById('content').style.background = '#333';
-		document.getElementById('stats').style.background = '#eee';
+		document.getElementById('content').style.background = '#282828';
+		document.getElementById('stats').style.background = '#efefef';
 		document.getElementById('theme').innerHTML = '<i class="fas fa-sun"></i>';
 		theme = 1;
 	}
