@@ -6,7 +6,7 @@
 
 <br>
 
-<img src="img/screenshot-global.png" width="400px"> <img src="img/screenshot.png" width="400px">
+<img src="img/screenshot-global.png" width="400px"> <img src="img/screenshot.png" width="400px"> <img src="img/screenshot-dark.png" width="400px">
 
 ### Stats:
 - Population
@@ -14,5 +14,11 @@
 - Vaccines stats
 - Life expectancy
 - ISO
+
+### API:
+- [API docs](https://github.com/M-Media-Group/Covid-19-API)
+- [M Media group](https://github.com/M-Media-Group)
+
+<br>
 
 <a title="" href="https://github.com/NguyenD-Nam"><img src="https://avatars.githubusercontent.com/u/69586735?v=4" width=26px /><img src="https://img.shields.io/badge/-@NguyenD--Nam-fff?style=for-the-badge&logo=GitHub&logoColor=bfbfbf&link=https://github.com/NguyenD-Nam"></a>
